@@ -1,0 +1,29 @@
+<div *ngFor="let item of obj">
+    <p (click)="parentFunction()">{{parentMark}} {{item.name}}({{item.type}})</p>
+    <ng-container>
+        <div *ngFor="let i of item.gm1">
+            <p style="margin-left: 35px;" *ngIf="exp1" (click)="childFunction1(i.type)">{{i.type =='manager'? 'a(manager)':'f(lead)'}}</p>
+            <div *ngFor="let j of i.manager1">
+                <ng-container *ngIf="exp1 && exp2">
+                    <span style="margin-left: 104px;" (click)="childFunction2()"> b({{j.type}}) </span>
+                    <ng-container *ngIf="exp2">
+                        <div *ngFor="let c of j.lead1" style="margin-left: 141px;">
+                            <ng-container *ngIf="exp2 && exp4">
+                                <p>{{c?.emp1?.name}}{{c?.emp1?.name ? '('+c?.emp1?.type+')':''}}</p>
+                                <p>{{c?.emp2?.name}}{{c?.emp2?.name? '('+c?.emp2?.type+')' :''}}</p>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+
+                </ng-container>
+            </div>
+            <ng-container>
+                <div *ngFor="let k of i.lead2">
+                    <span style="margin-left: 80px;" *ngIf="exp3">{{k?.emp1?.name}}</span>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+
+
+</div>

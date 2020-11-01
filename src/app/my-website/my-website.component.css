@@ -1,0 +1,47 @@
+.card:hover {
+    transform: scale(1.02);
+    transition: 1s;
+    cursor: pointer;
+}
+
+.form-control {
+    box-shadow: none;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1.3px solid red;
+    transition: 1s;
+}
+
+input.ng-valid {
+    border: 1.3px solid green;
+    transition: 1s;
+}
+
+::placeholder {
+    color: gray;
+    font-weight: bold;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 10px;
+}

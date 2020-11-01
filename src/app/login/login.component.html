@@ -1,0 +1,133 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-dark"> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark"> Course</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark"> Tutors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark"> Faq</a>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-sm btn-info mt-1 btn-block" (click)="gotologin()">login</button> </li>
+
+        </ul>
+    </div>
+</nav>
+<div class="modal-dialog login " *ngIf="!availDetail">
+    <div class="modal-content border-blue shadow mt-5">
+        <h2 class="text-center mb-4">Log In</h2>
+        <form [formGroup]='loginform' (ngSubmit)='onSubmit()'>
+            <div class="form-group">
+                <i class="fa fa-user"></i>
+                <input type="text" formControlName='email' class="form-control" placeholder="Email" required="required">
+                <span class="text-danger" *ngIf="loginform.get('email').invalid && loginform.get('email').touched">
+                      <small class="text-danger" *ngIf="loginform.controls.email.errors.required " >E-mail required</small>
+                    <small class="text-danger" *ngIf="loginform.controls.email.errors.email ">Invalid E-mail</small>
+                    </span>
+            </div>
+            <div class="form-group">
+                <i class="fa fa-key"></i>
+                <input type="password" formControlName='password' class="form-control" placeholder="Password" required="required">
+                <span class="text-danger" *ngIf="loginform.get('password').invalid && loginform.get('password').touched">
+                      <small class="text-danger" *ngIf="loginform.controls.password.errors.required " >Password required</small>
+                    <small class="text-danger" *ngIf="loginform.controls.password.errors.minlength">Password must be 5 character</small>
+                    </span>
+            </div>
+            <div class="form-group d-flex justify-content-between">
+                <div>
+                    <input type="checkbox"> <span> Remember me</span>
+                </div>
+                <span>forget Password</span>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-info  btn-sm" value="Login">
+                <div class="spinner-grow text-success" role="status" *ngIf="process">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </form>
+
+        <small class="text-center">Don't have an account ? <span class="text-info signUp">Sign Up</span></small>
+    </div>
+</div>
+<div class="card" *ngIf="availDetail">
+    <div class="card-header">
+        <h4>User details</h4>
+    </div>
+    <div class="card-body">
+        <h6><span class="text-danger">Id :</span> <span class="text-success"> {{userdetail.meta.role.id}}</span></h6>
+        <h6><span class="text-danger">Group id :</span> <span class="text-success"> {{userdetail.meta.role.group_id}}</span></h6>
+        <h6><span class="text-danger">Name :</span> <span class="text-success"> {{userdetail.meta.role.name}}</span></h6>
+        <h6><span class="text-danger">Value int :</span> <span class="text-success"> {{userdetail.meta.role.value_int}}</span></h6>
+        <h6><span class="text-danger">Value text :</span> <span class="text-success"> {{userdetail.meta.role.value_text}}</span></h6>
+    </div>
+</div> -->
+<!--
+<ng-container *ngFor="let item of myobj ;index as num">
+    <ng-container *ngFor="let i of item.gm1">
+        + {{i.type}} <br>
+        <ng-container *ngFor="let j of i.manager1">
+            <span (click)="fun()"> {{j.type}}</span> <br>
+            <ng-container *ngFor="let k of j.lead1; index as i">
+                <span (click)="getdata(k)">{{k.emp1.name}}</span>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ng-container> -->
+<!-- <div *ngFor="let d of obj">
+     <p>{{d?.name}}:- {{d?.type}}</p>
+    <hr>
+    <div *ngFor="let s of d?.gm1">
+        <p>{{s?.type}} {{s?.name}}</p>
+        <div *ngFor="let g of s?.manager1">
+            <p>{{g?.type}} {{g?.name}}</p>
+            <hr>
+            <div *ngFor="let c of g?.lead1">
+                <p>{{c?.emp1?.name}} [ {{c?.emp1?.type}} ]</p>
+                <p>{{c?.emp2?.name}} [ {{c?.emp2?.type}} ]</p>
+            </div>
+        </div>
+    </div>
+
+
+</div> -->
+<div *ngFor="let item of obj">
+    <p (click)="parentFunction()">{{parentMark}} {{item.name}}({{item.type}})</p>
+    <ng-container>
+        <div *ngFor="let i of item.gm1">
+            <p style="margin-left: 35px;" *ngIf="exp1" (click)="childFunction1(i.type)">{{i.type =='manager'? 'a(manager)':'f(lead)'}}</p>
+            <div *ngFor="let j of i.manager1">
+                <ng-container *ngIf="exp1 && exp2">
+                    <span style="margin-left: 104px;" (click)="childFunction2()"> b({{j.type}}) </span>
+                    <ng-container *ngIf="exp2">
+                        <div *ngFor="let c of j.lead1" style="margin-left: 141px;">
+                            <ng-container *ngIf="exp2 && exp4">
+                                <p>{{c?.emp1?.name}}{{c?.emp1?.name ? '('+c?.emp1?.type+')':''}}</p>
+                                <p>{{c?.emp2?.name}}{{c?.emp2?.name? '('+c?.emp2?.type+')' :''}}</p>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+
+                </ng-container>
+            </div>
+            <ng-container>
+                <div *ngFor="let k of i.lead2">
+                    <span style="margin-left: 80px;" *ngIf="exp3">{{k?.emp1?.name}}</span>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+
+
+</div>
