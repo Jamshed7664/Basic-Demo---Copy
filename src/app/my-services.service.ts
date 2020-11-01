@@ -53,27 +53,33 @@ export class MyServicesService implements OnInit {
   }
 
   private handleError(errRes: HttpErrorResponse) {
-    let errMsg = "null"
-    switch (errRes.error.error.message) {
-      case 'EMAIL_EXISTS':
-        errMsg = "The email address is already in use by another account."
-        break;
-      case 'OPERATION_NOT_ALLOWED':
-        errMsg = "Password sign-in is disabled for this project."
-        break;
-      case 'TOO_MANY_ATTEMPTS_TRY_LATER':
-        errMsg = "We have blocked all requests from this device due to unusual activity. Try again later."
-        break;
-      case 'EMAIL_NOT_FOUND':
-        errMsg = 'There is no user record corresponding to this identifier. The user may have been deleted.'
-        break;
-      case 'INVALID_PASSWORD':
-        errMsg = 'The password is invalid or the user does not have a password.'
-        break;
-      case 'USER_DISABLED':
-        errMsg = 'The user account has been disabled by an administrator.'
-        break;
+    let errMsg = "An unknown error occured"
+    if(!errRes.error || !errRes.error.error){
+      return throwError(errMsg)
     }
-    return throwError(errMsg);
+     else{
+      switch (errRes.error.error.message) {
+        case 'EMAIL_EXISTS':
+          errMsg = "The email address is already in use by another account."
+          break;
+        case 'OPERATION_NOT_ALLOWED':
+          errMsg = "Password sign-in is disabled for this project."
+          break;
+        case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+          errMsg = "We have blocked all requests from this device due to unusual activity. Try again later."
+          break;
+        case 'EMAIL_NOT_FOUND':
+          errMsg = 'There is no user record corresponding to this identifier. The user may have been deleted.'
+          break;
+        case 'INVALID_PASSWORD':
+          errMsg = 'The password is invalid or the user does not have a password.'
+          break;
+        case 'USER_DISABLED':
+          errMsg = 'The user account has been disabled by an administrator.'
+          break;
+      }
+      return throwError(errMsg);
+     }
+
   }
 }
