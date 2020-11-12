@@ -36,6 +36,11 @@ export class MyServicesService implements OnInit {
 
   }
 
+
+
+
+// With firebase
+
   signUp(email, password) {
     return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDBOCnZEoWjRubdohlE122nW8P-uwsRSmo', {
       email: email,
@@ -77,6 +82,8 @@ export class MyServicesService implements OnInit {
         case 'USER_DISABLED':
           errMsg = 'The user account has been disabled by an administrator.'
           break;
+          default:
+          errMsg ="Unknown Error"
       }
       return throwError(errMsg);
      }

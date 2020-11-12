@@ -1,0 +1,9 @@
+<p>material-design-comp works!</p>
+<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+<mat-form-field class="example-form-field shadow p-4">
+    <mat-label>Clearable input</mat-label>
+    <input matInput type="text" [(ngModel)]="value">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearMe()" class="matButton">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>

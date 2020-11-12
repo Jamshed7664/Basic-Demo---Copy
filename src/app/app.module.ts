@@ -15,6 +15,12 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { MyWebsiteComponent } from './my-website/my-website.component';
 import { ViewCardDataComponent } from './view-card-data/view-card-data.component';
 import { LoginFirebaseComponent } from './login-firebase/login-firebase.component';
+import { MaterialDesignCompComponent } from './material-design-comp/material-design-comp.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 const routes:Routes=[
   {path :'',component:MyWebsiteComponent},
   {path :'viewData',component:ViewCardDataComponent}
@@ -39,7 +45,9 @@ var config = {
     LoginFormComponent,
     MyWebsiteComponent,
     ViewCardDataComponent,
-    LoginFirebaseComponent
+    LoginFirebaseComponent,
+    MaterialDesignCompComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,12 @@ var config = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [MyServicesService],
   bootstrap: [AppComponent]
