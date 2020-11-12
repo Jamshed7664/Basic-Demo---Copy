@@ -1,6 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { EmailValidator } from '@angular/forms';
 import { throwError, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 interface AuthResponseData {

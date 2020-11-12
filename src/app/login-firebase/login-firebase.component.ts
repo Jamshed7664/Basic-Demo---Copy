@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { MyServicesService } from '../my-services.service';
+import { NotificationsService } from '../notifications.service';
 
 @Component({
   selector: 'app-login-firebase',
@@ -9,7 +11,7 @@ import { MyServicesService } from '../my-services.service';
 })
 export class LoginFirebaseComponent implements OnInit {
 
-  constructor(private myServices: MyServicesService) { }
+  constructor(private myServices: MyServicesService,private notificationService:NotificationsService) { }
   loginForm: FormGroup;
   v_pass: any = true;
   ngOnInit(): void {
@@ -38,8 +40,10 @@ export class LoginFirebaseComponent implements OnInit {
         this.myServices.signUp(this.loginForm.value.email, this.loginForm.value.password).subscribe(res => {
           this.loader = false;
           console.log(res);
+          this.notificationService.showSuccess("Account Created Successfully !",'Success')
         }, err => {
           this.errorMsg = err;
+          this.notificationService.showError(this.errorMsg,'Error',)
           this.loader = false;
         })
       } else {
@@ -49,8 +53,10 @@ export class LoginFirebaseComponent implements OnInit {
         this.myServices.signIn(this.loginForm.value.email, this.loginForm.value.password).subscribe(res => {
           this.loader = false;
           console.log(res);
+          this.notificationService.showSuccess("Logged in Successfully !",'Success')
         }, err => {
           this.errorMsg = err;
+          this.notificationService.showError( this.errorMsg,'Error')
           this.loader = false;
         })
       }

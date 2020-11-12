@@ -21,6 +21,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { ToastrModule } from 'ngx-toastr';
 const routes:Routes=[
   {path :'',component:MyWebsiteComponent},
   {path :'viewData',component:ViewCardDataComponent}
@@ -60,7 +61,8 @@ var config = {
     MatSliderModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ToastrModule.forRoot()
   ],
   providers: [MyServicesService],
   bootstrap: [AppComponent]
