@@ -18,7 +18,9 @@
                     </div>
                     <input type="password" class="form-control" formControlName="password" placeholder="Password">
                 </div>
-                <small class="text-danger ml-5" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">Password Required</small>
+                <small class="text-danger ml-5" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
+                  Password Required
+                </small>
                 <div class="form-group text-right mt-3">
                     <button type="submit" class="btn btn-sm btn-primary">{{btnTxt ? 'Sign Up ':'Log in '}} <span *ngIf="loader" class="spinner-border " role="status"></span></button>
                     <button type="button" class="btn btn-sm btn-success ml-3" (click)="changeBtnText()">Switch to {{btnTxt ? 'Log in ':'Sign Up'}}</button>

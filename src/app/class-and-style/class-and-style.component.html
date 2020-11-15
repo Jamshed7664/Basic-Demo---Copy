@@ -1,0 +1,15 @@
+<ng-container *ngFor="let item of people" class="text-center">
+    <div class="alert alert-success p-3 text-center" [ngClass]="{
+      'text-success':item.country==='UK',
+      'text-danger':item.country==='USA',
+      'info1':item.country==='HK'
+    }">
+        {{item.name}}({{item.country}})
+    </div>
+
+</ng-container>
+<div>
+    <h1 [ngStyle]="cls ?  mltStyle : noClass">Jamshed Ahmad</h1>
+</div>
+<p [class]="chngBtn ?'negetive':'positive'" (click)="changeTxt()">Jamshed</p>
+<p [class.negetive]='chngTxt' (click)="chngName()">Jamshd Ahmad</p>

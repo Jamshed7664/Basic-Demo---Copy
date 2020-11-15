@@ -22,6 +22,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
+import { ClassAndStyleComponent } from './class-and-style/class-and-style.component';
+import { TDFormComponent } from './tdform/tdform.component';
 const routes:Routes=[
   {path :'',component:MyWebsiteComponent},
   {path :'viewData',component:ViewCardDataComponent}
@@ -48,6 +50,8 @@ var config = {
     ViewCardDataComponent,
     LoginFirebaseComponent,
     MaterialDesignCompComponent,
+    ClassAndStyleComponent,
+    TDFormComponent,
 
   ],
   imports: [

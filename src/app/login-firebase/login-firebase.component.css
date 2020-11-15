@@ -26,3 +26,7 @@
     animation: spinner-border .75s linear infinite;
     /* color: black; */
 }
+
+.btn {
+    color: red;
+}
