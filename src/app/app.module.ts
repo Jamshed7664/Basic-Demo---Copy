@@ -24,9 +24,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
 import { ClassAndStyleComponent } from './class-and-style/class-and-style.component';
 import { TDFormComponent } from './tdform/tdform.component';
+import { HeaderComponent } from './header/header.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { Comp1Component } from './comp1/comp1.component';
+import { Comp2Component } from './comp2/comp2.component';
+import { Comp3Component } from './comp3/comp3.component';
 const routes:Routes=[
-  {path :'',component:MyWebsiteComponent},
-  {path :'viewData',component:ViewCardDataComponent}
+  {path :'',component:LoginFirebaseComponent},
+  {path :'viewData',component:ViewCardDataComponent},
+  {path :'login',component:LoginFirebaseComponent},
+  {path :'shopping-list',component:ShoppingListComponent}
 ]
 
 var config = {
@@ -52,7 +59,10 @@ var config = {
     MaterialDesignCompComponent,
     ClassAndStyleComponent,
     TDFormComponent,
-
+    HeaderComponent,
+    Comp1Component,
+    Comp2Component,
+    Comp3Component
   ],
   imports: [
     BrowserModule,
@@ -68,6 +78,7 @@ var config = {
     MatButtonModule,
     ToastrModule.forRoot()
   ],
+  exports : [ Comp1Component,Comp2Component,Comp3Component],
   providers: [MyServicesService],
   bootstrap: [AppComponent]
 })

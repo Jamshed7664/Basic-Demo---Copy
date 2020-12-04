@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 import { MyServicesService } from '../my-services.service';
 
@@ -11,17 +11,24 @@ import { MyServicesService } from '../my-services.service';
 export class HeaderComponent implements OnInit,OnDestroy {
 userSub:Subscription;
 isAuthenticated:boolean=false;
-  constructor(private myService:MyServicesService) { }
-
+  constructor(private myservce:MyServicesService) { }
+  exclusive:string;
   ngOnInit(): void {
- this.userSub=this.myService.user.subscribe(auth =>{
-    if(auth){
-     this.isAuthenticated=true;
-   }
+this.myservce.mySubject.subscribe(res =>{
+  this.exclusive=res;
 
- })
+})
+//  this.userSub=this.myService.user.subscribe(auth =>{
+//     if(auth){
+//      this.isAuthenticated=true;
+//    }
+
+//  })
   }
+
+
 ngOnDestroy(){
-this.userSub.unsubscribe()
+  this.myservce.mySubject.unsubscribe()
+  // this.myService.exclusiveubj.unsubscribe()
 }
 }

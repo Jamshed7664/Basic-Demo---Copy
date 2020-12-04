@@ -53,7 +53,7 @@
                 <div formArrayName="hobbies">
                     <div class="form-group">
                         <label for="">Hobbis</label>
-                        <div *ngFor="let item of reactiveForm.get('hobbies').controls;  index as i">
+                        <div *ngFor="let item of reactiveForm.get('hobbies')['controls'];  index as i">
                             <input type="text" class="form-control" [formControlName]="i">
                         </div>
                     </div>

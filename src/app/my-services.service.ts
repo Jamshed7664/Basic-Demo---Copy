@@ -1,7 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError, of } from 'rxjs';
+import { throwError, of, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 interface AuthResponseData {
   idToken: string;
   email: string;
@@ -20,6 +21,12 @@ export class MyServicesService implements OnInit {
   ngOnInit() {
 
   }
+mySubject=new BehaviorSubject<string>(null)
+
+
+
+
+
   loginuser(object) {
     return this.http.post<AuthResponseData>('https://console.asthma-action-hero.i22.biz/api/v1/user/login.json', object)
   }
